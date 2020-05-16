@@ -17,15 +17,19 @@ export default function HomeScreen() {
     const quotesArray = [];
     if (quotes.length > 0) {
       for (let i = 0; i < 30; i++) {
-        quotesArray.push(<Text key={i}>{quotes[i].text}</Text>);
+        quotesArray.push(
+          <Text style={styles.quoteText} key={i}>
+            {quotes[i].text}
+          </Text>
+        );
       }
     }
     return quotesArray;
   }
   return (
     <View style={styles.container}>
+      <Button title="Select!" onPress={handleButtonPress} />
       <ScrollView>
-        <Button title="Select!" onPress={handleButtonPress} />
         <View>{renderQuotes()}</View>
       </ScrollView>
     </View>
@@ -40,5 +44,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+  quoteText: {
+    padding: 10,
+    fontFamily: "Times New Roman",
+    fontSize: 20,
   },
 });
